@@ -12,5 +12,33 @@
 
 <body>
 
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary container d-flex flex-row justify-content-between ">
+            <div class="container-fluid ">
+                <a class="navbar-brand" href="#">Navbar</a>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <form class="d-flex" method="GET" action="index.php">
+                        <select class="form-control mr-sm-2" name="park">
+                            <option value="all">all</option>
+                            <option value="true">PARK</option>
+                            <option value="false">NO PARK&nbsp;</option>
+                        </select>
+                        <select class="form-control mr-sm-2" name="vote">
+                            <?php
+                            //da 0 a 9 stelle
+                            for ($i = 0; $i < 5; $i++) {
+                                echo '<option value="' . $i . '">' . $i . '</option>';
+                            }
+
+
+                            ?>
+                        </select>
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
 
 </body>

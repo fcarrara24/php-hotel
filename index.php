@@ -6,9 +6,12 @@ include __DIR__ . '/partials/header.php';
 $filterHotel = $hotels;
 //main
 if (isset($_GET['vote']) && $_GET['park']) {
-    $filterHotel = array_filter($hotels, fn($hotel) => $_GET['park'] == 'all' || (String) $hotel['parking'] === (String) $_GET['park']);
-    $filterHotel = array_filter($hotels, fn($hotel) => (int) $hotel['vote'] >= $_GET['vote']);
+    $filterHotel = array_filter($hotels, fn($hotel) => $_GET['park'] == 'all' || (($hotel['parking'] == 1) ? 'true' : 'false') == $_GET['park']);
+
+
+    $filterHotel = array_filter($filterHotel, fn($hotel) => (int) $hotel['vote'] >= $_GET['vote']);
 }
+
 ?>
 <main>
     <div class="container">
@@ -37,7 +40,7 @@ if (isset($_GET['vote']) && $_GET['park']) {
                         foreach ($values as $value) {
                             ?>
                             <td>
-                                <?php echo $hotel[$value] ? $hotel[$value] : '0'; ?>
+                                <?php echo ($hotel[$value]) ? $hotel[$value] : '0'; ?>
                             </td>
                             <?php
                         }
